@@ -16,13 +16,3 @@
     height: 600px;
     margin-top: 50px;
 }
-
-
-@media  (max-width:390px) {
-
-    .style img {
-        margin-right:10rem;
-        
-    }
-    
-}
