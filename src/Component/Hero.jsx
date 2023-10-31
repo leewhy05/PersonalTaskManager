@@ -1,27 +1,27 @@
 import React from 'react'
 import Group from '../assets/Component 1.svg'
 import '../style/Hero.css'
+import { Link } from 'react-router-dom'
+import { Button } from 'react-bootstrap'
 
 
 const Hero = () => {
   return (
-    <div className='container popping'>
-<div className='row justify-content-between align-items-center'>
-    <div className='style col-lg-8 fs-2'>
-    <h1>Manage your Tasks on</h1>
-    <h1 style={{color:'#974FD0'}}>TaskDuty</h1>
-    <div>
-    <p className='text-secondary fs-3 w-100 mt-4'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Non tellus, sapien, morbi ante nunc euismod ac felis ac. Massa et, at platea tempus duis non eget. Hendrerit tortor fermentum bibendum mi nisl semper porttitor. Nec accumsan.</p>
-    </div>
-    <div className='style'>
-    <button style={{backgroundColor:'#974FD0'}} className="btn btn text-light btn-lg">Go to My Task</button>
-    </div>
-    </div>
-    <div className='style col-lg-4'>
-        <img src={Group}alt={Group} className='lh-base' />
-    </div>
-</div>
+    <div className='container-fluid row justify-content-center align-items-center hero mt-5'>
+        <div className=' col-lg-6 left-hero  '> 
+        <h2 className='manage'>Manage your Tasks on <br /> <span>Task duty</span></h2>
+        <div className='title'>
 
+        <p className='fs-5'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga earum, enim quia incidunt quod ipsam dicta deleniti ex sunt recusandae facere veritatis nisi, id molestias officia possimus iste hic itaque ratione repellat saepe quis porro repudiandae? Totam beatae voluptatibus nemo dignissimos atque, delectus, ab, quibusdam in placeat quos excepturi reprehenderit?</p>
+        <Link to='/AllTask'><Button className='w-75 fs-4' style={{backgroundColor:'#974FD0'}} variant="secondary">Go  to my tasks</Button>{' '}</Link>
+        </div>
+
+
+        </div>
+       
+        <div className='col-lg-5 pt-3 align-items-end justify-content-end'>
+            <img className='hero-pics' src={Group} alt="" />
+        </div>
 
     </div>
   )
