@@ -1,0 +1,31 @@
+
+:root{
+    overflow-x: hidden;
+}
+.style img {
+    width: 383px;
+    height: 450px;
+    /* margin-left: 5rem; */
+    
+}
+.style p{
+    left:170px;
+    
+}
+.style button{
+    /* margin-top: 75px; */
+}
+.popping{
+    height: 600px;
+    margin-top: 50px;
+}
+
+
+@media  (max-width:390px) {
+
+    .style img {
+        margin-right:10rem;
+        
+    }
+    
+}
