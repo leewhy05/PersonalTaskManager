@@ -12,7 +12,7 @@ function NavScrollExample() {
     <>
     <Navbar expand="lg" className="container mt-4">
       <Container fluid>
-        <h2><Link to='/' className='text-decoration-none text-dark'><img src={Logo} alt={Logo}/>TaskDuty</Link></h2>
+        <h2 className='bounce'><Link to='/' className='text-decoration-none text-dark'><img src={Logo} alt={Logo}/>TaskDuty</Link></h2>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
@@ -28,7 +28,7 @@ function NavScrollExample() {
             {!isAbout && '/AllTask' &&(
               <Link to= {'/AllTask'} className='text-decoration-none text-dark'><h4>All Task</h4></Link>
             )}
-            <Link className='text-decoration-none text-dark d-none d-lg-block'><img src={EYE} alt={EYE} /></Link>
+            <Link className='text-decoration-none text-dark d-none d-lg-block scale'><img src={EYE} alt={EYE} /></Link>
           </div>
         </Navbar.Collapse>
       </Container>

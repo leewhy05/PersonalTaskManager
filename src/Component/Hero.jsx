@@ -1,30 +1,61 @@
-import React from 'react'
-import Group from '../assets/Component 1.svg'
-import '../style/Hero.css'
-import { Link } from 'react-router-dom'
-import { Button } from 'react-bootstrap'
-
+import React from "react";
+import Group from "../assets/Component 1.svg";
+import "../style/Hero.css";
+import { Link } from "react-router-dom";
+import { Button } from "react-bootstrap";
 
 const Hero = () => {
   return (
-    <div className='container-fluid row justify-content-center align-items-center hero mt-5'>
-        <div className=' col-lg-6 left-hero  '> 
-        <h2 className='manage'>Manage your Tasks on <br /> <span>Task duty</span></h2>
-        <div className='title'>
-
-        <p className='fs-5'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga earum, enim quia incidunt quod ipsam dicta deleniti ex sunt recusandae facere veritatis nisi, id molestias officia possimus iste hic itaque ratione repellat saepe quis porro repudiandae? Totam beatae voluptatibus nemo dignissimos atque, delectus, ab, quibusdam in placeat quos excepturi reprehenderit?</p>
-        <Link to='/AllTask'><Button className='w-75 fs-4' style={{backgroundColor:'#974FD0'}} variant="secondary">Go  to my tasks</Button>{' '}</Link>
+    <main className="container pt-5">
+      <div className="row justify-content-between align-items-center gap-4">
+        <div className="col-lg-6 pt-5">
+          <h2>
+            Improve Productivity By Managing{" "}
+            <span className="" style={{ color: "#974FD0" }}>
+              Your User
+            </span>
+          </h2>
+          <p className="py-3">
+            Lorem ipsum dolor sit amet consectetur. Ut nisl nisl cursus massa
+            sed. Turpis ac aliquet lacinia justo turpis amet at arcu. Diam
+            vulputate suspendisse aliquam enim sagittis cursiodio ultrices.
+            Condimentum lacus nunc rhoncus massa. Tortorstiu ultricies neque
+            aliquam sit non. Diam vehicula dignissimepei pellentesque eros
+            vitae. Viverra in vitae nunc lorem eget lciou imperdiet tortor. Ac
+            mauris vel non amet eget egestas inoriou pellentesque commodo amet.
+            Facilisi sed ut nisi pellentesque diam egestas et turpis donor amet.
+          </p>
+          <div className="d-flex gap-3">
+            <button
+              className="btn btn- btn-lg"
+              style={{ backgroundColor: "#974FD0" }}
+            >
+              <Link to={"/NewTask"} className="text-decoration-none text-light">
+                {" "}
+                + NEW TASK
+              </Link>
+            </button>
+            <button
+              className="btn btn- text-light btn-lg"
+              style={{ backgroundColor: "#974FD0" }}
+            >
+              <Link to={"/AllTask"} className="text-decoration-none text-light">
+                {" "}
+                ALL TASK
+              </Link>
+            </button>
+          </div>
         </div>
-
-
+        <div className="col-lg-4">
+          <img
+            src={Group}
+            alt={Group}
+            className="img-fluid img-thumbnail scale"
+          />
         </div>
-       
-        <div className='col-lg-5 pt-3 align-items-end justify-content-end'>
-            <img className='hero-pics' src={Group} alt="" />
-        </div>
+      </div>
+    </main>
+  );
+};
 
-    </div>
-  )
-}
-
-export default Hero
+export default Hero;

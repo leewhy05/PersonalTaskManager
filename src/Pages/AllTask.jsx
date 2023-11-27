@@ -1,13 +1,48 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../style/AllStyle.css";
+import { useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
 import { Link } from "react-router-dom";
-import Edit from "../assets/edit.svg";
-import Delete from "../assets/delete.svg";
+
+import Spinner from "react-bootstrap/Spinner";
+import UpdateTask from "../Component/UpdateTask";
 
 const AllTask = () => {
   const scrollToTop = () => {
     window.scroll({ top: 0, behavior: "smooth" });
   };
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+
+  async function getData() {
+    try {
+      setLoading(true);
+      const fetcher = await axios.get(
+        "https://taskmanager-dfcj.onrender.com/api/task"
+      );
+      console.log(fetcher.data.user);
+      setData(fetcher.data.user);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  const { userId } = useParams();
+  const handleDelete = async () => {
+    try {
+      await axios.delete(
+        `https://taskmanager-dfcj.onrender.com/api/task/${userId}`
+      );
+      navigate("/AllUser");
+    } catch (error) {}
+  };
+  useEffect(() => {
+    document.title = "All-TASK || page";
+    getData();
+  }, []);
   return (
     <div className="container lag">
       <div className=" mt-4">
@@ -20,146 +55,47 @@ const AllTask = () => {
           </Link>
         </div>
 
-        <div className="mt-5 border rounded">
-          <div className="d-flex justify-content-between align-items-center">
-            <h4 className="text-danger ms-3">urgent</h4>
-            <div className="d-flex gap-3 me-3 my-3">
-            <Link to={`/EditTask`} className="text-decoration-none">
-                <button
-                  style={{ backgroundColor: "#974FD0" }}
-                  className="btn btn- text-light btn-lg"
-                >
-                  <img src={Edit} alt={Edit} />
-                  Edit
-                </button>
-              </Link>
-              <div>
-                <button
-                  style={{ color: "#974FD0" }}
-                  className="btn btn-light btn-lg"
-                >
-                  <img src={Delete} alt={Delete} />
-                  Delete
-                </button>
-              </div>
-            </div>
-          </div>
-          <hr />
-          <div className="mt-4">
-            <h2>FinTech Website Update</h2>
-            <p className="fs-3">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet quis
-              nibh posuere non tempor. Erat mattis gravida pulvinar nibh aliquam
-              faucibus et magna. Interdum eu tempus ultricies cras neque mi.
-              Eget tellus suspendisse et viverra.
-            </p>
-          </div>
-        </div>
-        <div className=" mt-5 border rounded">
-          <div className="d-flex justify-content-between align-items-center">
-            <h4 className="text-success ms-3">important</h4>
-            <div className="d-flex gap-3 me-3 my-3 align-items-center">
-            <Link to={`/EditTask`} className="text-decoration-none">
-                <button
-                  style={{ backgroundColor: "#974FD0" }}
-                  className="btn btn- text-light btn-lg"
-                >
-                  <img src={Edit} alt={Edit} />
-                  Edit
-                </button>
-              </Link>
-              <div>
-                <button
-                  style={{ color: "#974FD0" }}
-                  className="btn btn-light btn-lg"
-                >
-                  <img src={Delete} alt={Delete} />
-                  Delete
-                </button>
-              </div>
-            </div>
-          </div>
-          <hr />
-          <div className="mt-4">
-            <h2>Agro Website Update</h2>
-            <p className="fs-3">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet quis
-              nibh posuere non tempor. Erat mattis gravida pulvinar nibh aliquam
-              faucibus et magna. Interdum eu tempus ultricies cras neque mi.
-              Eget tellus suspendisse et viverra.
-            </p>
-          </div>
-        </div>
-
-        <div className="mt-5 border rounded">
-          <div className="d-flex justify-content-between align-items-center">
-            <h4 className="text-danger ms-3">urgent</h4>
-            <div className="d-flex gap-3 me-3 my-3">
-              <Link to={`/EditTask`} className="text-decoration-none">
-                <button
-                  style={{ backgroundColor: "#974FD0" }}
-                  className="btn btn- text-light btn-lg"
-                >
-                  <img src={Edit} alt={Edit} />
-                  Edit
-                </button>
-              </Link>
-              <div>
-                <button
-                  style={{ color: "#974FD0" }}
-                  className="btn btn-light btn-lg"
-                >
-                  <img src={Delete} alt={Delete} />
-                  Delete
-                </button>
-              </div>
-            </div>
-          </div>
-          <hr />
-          <div className="mt-4">
-            <h2>FinTech Website Update</h2>
-            <p className="fs-3">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet quis
-              nibh posuere non tempor. Erat mattis gravida pulvinar nibh aliquam
-              faucibus et magna. Interdum eu tempus ultricies cras neque mi.
-              Eget tellus suspendisse et viverra.
-            </p>
-          </div>
-        </div>
-        <div className=" mt-5 border rounded">
-          <div className="d-flex justify-content-between align-items-center">
-            <h4 className="text-success ms-3">important</h4>
-            <div className="d-flex gap-3 me-3 my-3 align-items-center">
-            <Link to={`/EditTask`} className="text-decoration-none">
-                <button
-                  style={{ backgroundColor: "#974FD0" }}
-                  className="btn btn- text-light btn-lg"
-                >
-                  <img src={Edit} alt={Edit} />
-                  Edit
-                </button>
-              </Link>
-              <div>
-                <button
-                  style={{ color: "#974FD0" }}
-                  className="btn btn-light btn-lg"
-                >
-                  <img src={Delete} alt={Delete} />
-                  Delete
-                </button>
-              </div>
-            </div>
-          </div>
-          <hr />
-          <div className="mt-4">
-            <h2>Agro Website Update</h2>
-            <p className="fs-3">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet quis
-              nibh posuere non tempor. Erat mattis gravida pulvinar nibh aliquam
-              faucibus et magna. Interdum eu tempus ultricies cras neque mi.
-              Eget tellus suspendisse et viverra.
-            </p>
-          </div>
+        {loading && <Spinner animation="border" />}
+        <div className="container pt-5 row justify-content-between align-items-center gap-3">
+          {data && data.lenght < 1 ? (
+            <h2 className="" style={{ color: "#974FD0" }}>
+              No Users yet...create one
+            </h2>
+          ) : (
+            data.map((datum) => {
+              const { _id, taskTitle, description, tag } = datum;
+              return (
+                <div className="card col-lg-5 p-3 shadow-sm" key={_id}>
+                  <div className="d-flex justify-content-between align-items-center gap-3 border-bottom border-3">
+                    <div className="fw-bold fs-5">
+                      <p>{tag}</p>
+                    </div>
+                    <div className="d-flex justify-content-end align-items-center gap-3 ">
+                      <button
+                        className="fw-bold fs-5 text-light"
+                        style={{ backgroundColor: "#974FD0" }}
+                      >
+                        <UpdateTask/>
+                      </button>
+                      <button
+                        className="fw-bold fs-5"
+                        onClick={() => handleDelete(data._id)}
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  </div>
+                  <Link
+                    className="text-decoration-none"
+                    to={`/SingleTask${_id}`}
+                  >
+                    <h2 className="">{taskTitle}</h2>
+                    <p>{description}</p>
+                  </Link>
+                </div>
+              );
+            })
+          )}
         </div>
       </div>
       <Link onClick={scrollToTop}>

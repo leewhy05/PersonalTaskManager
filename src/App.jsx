@@ -4,7 +4,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './Pages/Home'
 import AllTask from './Pages/AllTask'
 import NewTask from './Pages/NewTask'
-import EditTask from './Pages/EditTask'
+// import EditTask from './Pages/EditTask'
+import SingleTask from './Pages/SingleTask'
 
 function App() {
  
@@ -17,7 +18,8 @@ function App() {
        <Route index element={<Home/>} />
        <Route path='/AllTask' element={<AllTask/>}/>
        <Route path='/NewTask' element={<NewTask/>}/>
-       <Route path='/EditTask' element={<EditTask/>}/>
+       {/* <Route path='/EditTask' element={<EditTask/>}/> */}
+       <Route path='/SingleTask' element={<SingleTask/>}/>
       </Routes>
       </BrowserRouter>
     </>
