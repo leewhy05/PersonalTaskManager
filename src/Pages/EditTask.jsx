@@ -13,19 +13,21 @@ const EditTask = () => {
   const [taskTitle, setTaskTitle] = useState("");
   const [description, setDescription] = useState("");
   const [tag, setTag] = useState("");
-  const { userId } = useParams();
+  const { userId} = useParams();
+  const navigate = useNavigate()
 
-  const navigate = useNavigate();
+ 
 
   let getData = async () => {
     try {
       let dataGotten = await axios.get(
         `https://taskmanager-dfcj.onrender.com/api/task/${userId}`
       );
-      console.log(dataGotten.data.tasks);
-      setTaskTitle(dataGotten.data.tasks.taskTitle); 
-      setDescription(dataGotten.data.tasks.description);
-      setTag(dataGotten.data.tasks.tag);
+      console.log(dataGotten);
+      console.log(dataGotten.data.user);
+      setTaskTitle(dataGotten.data.user.taskTitle);
+      setDescription(dataGotten.data.user.description);
+      setTag(dataGotten.data.user.tag);
     } catch (error) {
       console.log(error);
     } finally {
@@ -35,6 +37,23 @@ const EditTask = () => {
   useEffect(() => {
     getData();
   }, []);
+
+  async function handleUpdate(userId) {
+    try {
+        await axios.patch(`https://taskmanager-dfcj.onrender.com/api/task/${userId}`, {
+          taskTitle,
+          description,
+          tag
+       })
+      navigate('/AllTask')
+       
+
+    } catch (error) {
+      console.log(error);
+      alert(error.response.data.msg.message)
+    }
+      
+  }
   return (
     <div className="container">
       <div className="mt-4">
@@ -82,6 +101,7 @@ const EditTask = () => {
         <button
           className="btn btn- text-light fs-4 fw-bold btn-lg w-100"
           style={{ backgroundColor: "#974FD0" }}
+          onClick={() =>{handleUpdate(userId)}}
         >
           Done
         </button>

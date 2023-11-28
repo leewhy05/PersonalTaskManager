@@ -8,22 +8,25 @@ import Modal from "react-bootstrap/Modal";
 import { useParams, useNavigate } from "react-router-dom";
 
 const UpdateTask = () => {
+  const [data, setData] = useState([]);
+
   const [taskTitle, setTaskTitle] = useState("");
   const [description, setDescription] = useState("");
   const [tag, setTag] = useState("");
-  const { _id } = useParams();
+  const { userId} = useParams();
 
  
 
   let getData = async () => {
     try {
       let dataGotten = await axios.get(
-        `https://taskmanager-dfcj.onrender.com/api/task/${_id}`
+        `https://taskmanager-dfcj.onrender.com/api/task/${userId}`
       );
-      console.log(dataGotten.data.tasks);
-      setTaskTitle(dataGotten.data.tasks.taskTitle);
-      setDescription(dataGotten.data.tasks.description);
-      setTag(dataGotten.data.tasks.tag);
+      console.log(dataGotten);
+      console.log(dataGotten.data.user);
+      setTaskTitle(dataGotten.data.user.taskTitle);
+      setDescription(dataGotten.data.user.description);
+      setTag(dataGotten.data.user.tag);
     } catch (error) {
       console.log(error);
     } finally {

@@ -3,9 +3,8 @@ import "../style/AllStyle.css";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { Link } from "react-router-dom";
-
 import Spinner from "react-bootstrap/Spinner";
-import UpdateTask from "../Component/UpdateTask";
+
 
 const AllTask = () => {
   const scrollToTop = () => {
@@ -14,6 +13,7 @@ const AllTask = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  
 
   async function getData() {
     try {
@@ -30,15 +30,7 @@ const AllTask = () => {
     }
   }
 
-  const { userId } = useParams();
-  const handleDelete = async () => {
-    try {
-      await axios.delete(
-        `https://taskmanager-dfcj.onrender.com/api/task/${userId}`
-      );
-      navigate("/AllUser");
-    } catch (error) {}
-  };
+
   useEffect(() => {
     document.title = "All-TASK || page";
     getData();
@@ -54,12 +46,15 @@ const AllTask = () => {
             <h3 style={{ color: "#974FD0" }}>+ Add to My Task</h3>
           </Link>
         </div>
+        
+      </div>
+      <div>
 
         {loading && <Spinner animation="border" />}
         <div className="container pt-5 row justify-content-between align-items-center gap-3">
-          {data && data.lenght < 1 ? (
+          {data&&data.length < 1 ? (
             <h2 className="" style={{ color: "#974FD0" }}>
-              No Users yet...create one
+              No Task yet...create one
             </h2>
           ) : (
             data.map((datum) => {
@@ -70,24 +65,11 @@ const AllTask = () => {
                     <div className="fw-bold fs-5">
                       <p>{tag}</p>
                     </div>
-                    <div className="d-flex justify-content-end align-items-center gap-3 ">
-                      <button
-                        className="fw-bold fs-5 text-light"
-                        style={{ backgroundColor: "#974FD0" }}
-                      >
-                        <UpdateTask/>
-                      </button>
-                      <button
-                        className="fw-bold fs-5"
-                        onClick={() => handleDelete(data._id)}
-                      >
-                        Delete
-                      </button>
-                    </div>
+                    
                   </div>
                   <Link
                     className="text-decoration-none"
-                    to={`/SingleTask${_id}`}
+                    to={`/SingleTask/${_id}`}
                   >
                     <h2 className="">{taskTitle}</h2>
                     <p>{description}</p>

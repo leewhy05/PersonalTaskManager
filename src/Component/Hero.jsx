@@ -7,7 +7,7 @@ import { Button } from "react-bootstrap";
 const Hero = () => {
   return (
     <main className="container pt-5">
-      <div className="row justify-content-between align-items-center gap-4">
+      <div className="row justify-content-between align-items-center gap-5">
         <div className="col-lg-6 pt-5">
           <h2>
             Improve Productivity By Managing{" "}

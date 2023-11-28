@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import '../style/newTask.css'
 import Form from 'react-bootstrap/Form';
+import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import Arrow from '../assets/eva_arrow-ios-back-fill.svg'
 import { useNavigate } from 'react-router-dom';
@@ -27,14 +28,14 @@ const NewTask = () => {
           })
          console.log(data);
          if(data.status === 201){
-            alert(data.data.msg)
+            toast.success(data.data.msg);
             navigate('/AllTask')
             console.log(data);
          }
 
       } catch (error) {
         console.log(error);
-        alert(error.response.data.msg.message)
+        toast.error(error.response.data.msg.message);
       }
         
     }
